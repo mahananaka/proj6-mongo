@@ -34,6 +34,11 @@ env:
 run:	env
 	($(INVENV) python3 flask_main.py) ||  true
 
+# 'make trial' run's db_trial.py
+# 
+dbtrial:	env
+	($(INVENV) python3 db_trial.py)
+
 # 'make service' runs as a background job under the gunicorn 
 #  WSGI server. FIXME:  A real production service would use 
 #  NGINX in combination with gunicorn to prevent DOS attacks. 
