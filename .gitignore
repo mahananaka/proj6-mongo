@@ -1,3 +1,9 @@
+CONFIG.py
+admin_secrets.py
+client_secrets.py
+
+#The rest are stardard ignores from github
+
 # Byte-compiled / optimized / DLL files
 secrets/
 __pycache__/
