@@ -18,3 +18,7 @@
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+.row :nth-child(even){
+  background-color: #dcdcdc;
+}
