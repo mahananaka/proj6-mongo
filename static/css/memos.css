@@ -19,6 +19,6 @@
 	margin-bottom: 10px;
 }
 
-.memo_container :nth-child(even){
+.memo_container:nth-child(even){
   background-color: #dcdcdc;
 }
