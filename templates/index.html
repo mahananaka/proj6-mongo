@@ -37,8 +37,8 @@
 {% endwith %}
 
 <h1>Memos</h1>
-<input type="button" class="btn btn-info pull-right" value="Input Button">
-<a href="{{ url_for('create') }}" class="btn btn-info" role="button">New Memo</a>
+<input type="button" class="btn btn-info align-left" value="Delete Selected">
+<a href="{{ url_for('create') }}" class="btn btn-info align-right" role="button">New Memo</a>
 {% if g.memos %}
   <div class=memo>
   <div class="row">
