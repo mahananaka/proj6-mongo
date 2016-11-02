@@ -59,9 +59,10 @@
   </div>
   </div> <!-- row -->
   </div> <!-- memo -->
+  <div class="memo_container">
     {% for memo in g.memos %}
   <div class="memo">
-  <div class="row">
+  <div class="row ">
   <div class="col-md-1 text-center">
     <label><input type="checkbox" name="chkDelete" value=""></label>
   </div>
@@ -74,6 +75,7 @@
   </div> <!-- row -->
   </div> <!-- memo -->
   {% endfor %}
+  </div>
 {% else %}
   <p>No memos for you. </p>  
 {% endif %}
