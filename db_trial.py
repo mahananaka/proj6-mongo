@@ -17,11 +17,12 @@ import secrets.client_secrets
 MONGO_CLIENT_URL = "mongodb://{}:{}@{}:{}/{}".format(
     secrets.client_secrets.db_user,
     secrets.client_secrets.db_user_pw,
-    secrets.admin_secrets.host, 
-    secrets.admin_secrets.port, 
+    secrets.admin_secrets.host,
+    secrets.admin_secrets.port,
     secrets.client_secrets.db)
 
 try: 
+    print(MONGO_CLIENT_URL)
     dbclient = MongoClient(MONGO_CLIENT_URL)
     db = getattr(dbclient, secrets.client_secrets.db)
     print("Got database")

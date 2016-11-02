@@ -37,15 +37,28 @@
 {% endwith %}
 
 <h1>Memos</h1>
-
+<input type="submit" class="btn-success pull-left" val="Delete Selected" />
+<a href="{{ url_for('create') }}" class="bnt-success pull-right" val="New Memo" />
 {% if g.memos %}
+  <div class="col-md-1">
+    <h3>Delete</h3>
+  </div>
+  <div class="col-md-2">
+    <h3>Date</h3>
+  </div>
+  <div class="col-md-9">
+    <h3>Content</h3>
+  </div>
     {% for memo in g.memos %}
   <div class="memo">
   <div class="row">
+  <div class="col-md-1">
+    <label><input type="checkbox" name="chkDelete" value=""></label>
+  </div>
   <div class="col-md-2">
     {{ memo.date | humanize }}
   </div>
-  <div class="col-md-10">
+  <div class="col-md-9">
     {{ memo.text }}
   </div>
   </div> <!-- row -->
