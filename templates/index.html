@@ -40,15 +40,19 @@
 <input type="submit" class="btn btn-success pull-left" val="Delete Selected" />
 <a href="{{ url_for('create') }}" class="btn bnt-success pull-right">New Memo</a>
 {% if g.memos %}
+  <div class=memo>
+  <div class="row">
   <div class="col-md-1">
-    <h3>Delete</h3>
+    <h4>Delete</h4>
   </div>
   <div class="col-md-2">
-    <h3>Date</h3>
+    <h4>Date</h4>
   </div>
   <div class="col-md-9">
-    <h3>Content</h3>
+    <h4>Content</h4>
   </div>
+ </div> <!-- row -->
+  </div> <!-- memo -->
     {% for memo in g.memos %}
   <div class="memo">
   <div class="row">
