@@ -73,7 +73,7 @@ def index():
 
 @app.route("/create")
 @app.route("/new")
- def create():
+def create():
      app.logger.debug("Create")
      return flask.render_template('create.html')
 
