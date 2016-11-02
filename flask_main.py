@@ -125,7 +125,7 @@ def get_memos():
     can be inserted directly in the 'session' object.
     """
     records = [ ]
-    for record in collection.find( { "type": "dated_memo" } ).sort({ date:1}):
+    for record in collection.find( { "type": "dated_memo" } ).sort({ "date":1}):
         record['date'] = arrow.get(record['date']).isoformat()
         del record['_id']
         records.append(record)
