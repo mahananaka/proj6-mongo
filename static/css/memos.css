@@ -19,6 +19,6 @@
 	margin-bottom: 10px;
 }
 
-.row :nth-child(even){
+.memo :nth-child(even){
   background-color: #dcdcdc;
 }
