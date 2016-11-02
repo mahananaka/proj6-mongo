@@ -37,8 +37,14 @@
 {% endwith %}
 
 <h1>Memos</h1>
-<input type="button" class="btn btn-info align-left" value="Delete Selected">
-<a href="{{ url_for('create') }}" class="btn btn-info align-right" role="button">New Memo</a>
+<div class="row">
+<div class="col-md-2"
+  <input type="button" class="btn btn-info" value="Delete Selected">
+</div>
+<div class="col-md-2 col-md-offset-4">
+  <a href="{{ url_for('create') }}" class="btn btn-info" role="button">New Memo</a>
+</div>
+</div>
 {% if g.memos %}
   <div class=memo>
   <div class="row">
@@ -56,7 +62,7 @@
     {% for memo in g.memos %}
   <div class="memo">
   <div class="row">
-  <div class="col-md-1">
+  <div class="col-md-1 center">
     <label><input type="checkbox" name="chkDelete" value=""></label>
   </div>
   <div class="col-md-2">
