@@ -14,11 +14,13 @@
     font-size: smaller;
 }
 
-.row {
+.row even{
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
 .odd{
-  background-color: #dcdcdc;
+	background-color: #dcdcdc;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
