@@ -71,10 +71,8 @@ def index():
       app.logger.debug("Memo: " + str(memo))
   return flask.render_template('index.html')
 
-
-
- @app.route("/create")
- @app.route("/new")
+@app.route("/create")
+@app.route("/new")
  def create():
      app.logger.debug("Create")
      return flask.render_template('create.html')
