@@ -55,11 +55,18 @@
 
   function validateForm(){
     var dateinput = $('input[name="date"]').val();
+    var memoinput = $('input[name="memo"]').val().strip();
 
-    if(dateRegex.test(dateinput))
-      return true;
-    
-    sendAlert("Invalid Date","warning");
+    if(!dateRegex.test(dateinput)){
+      sendAlert("Invalid Date","warning");
+      return false;
+    }
+
+    if(memoinput == ""){
+      sendAlert("You must have something in the memo field","warning");
+      return false;
+    }
+
     return false;
   }
 
