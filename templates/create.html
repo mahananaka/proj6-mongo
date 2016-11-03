@@ -60,7 +60,7 @@
       return true;
     
     sendAlert("Invalid Date","warning");
-    return false;      
+    return false;
   }
 
   var sendAlert = function(message, type){
@@ -69,6 +69,7 @@
       htmlcode = htmlcode + message + "</div>";
 
       msgContainer = $('div[name="alertContainer"]')
+      console.log(msgContainer.html());
       msgContainer.html(htmlcode);
 
       //the following is the code to make the alerts disappear automatically
