@@ -136,8 +136,7 @@ def get_memos():
     """
     records = [ ]
     for record in collection.find( { "type": "dated_memo" } ).sort([("date",1)]):
-        record['date'] = arrow.get(record['date']).isoformat()
-        records.append(record)
+        record['date'] = arrow.get(record['date'])
     return records
 
 def insert_memo(date, memo):
@@ -145,8 +144,9 @@ def insert_memo(date, memo):
     Inserts a new memo into the database, must insert
     document that is basically a dict.
     """
+    print("Inserting {}".format(arrow.get(date,"MM/DD/YYYY").isoformat()))
     record = {"type": "dated_memo", 
-              "date": arrow.get(date,"MM/DD/YYYY").to('local').isoformat(),
+              "date": arrow.get(date,"MM/DD/YYYY").isoformat(),
               "text": memo}
 
     collection.insert(record)
