@@ -125,7 +125,7 @@ def humanize_arrow_date( date ):
 
       for (difference,result) in HUMANIZED_DATES:
           if (dayDiff == difference):
-             human = result
+              human = result
               return human
 
     return then.humanize(now)
