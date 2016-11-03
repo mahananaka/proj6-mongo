@@ -120,7 +120,7 @@ def humanize_arrow_date( date ):
     thenTuple = then.isocalendar()
     nowTuple = now.isocalendar()
 
-    if(thenTuple[0] == nowTuple[0] && thenTuple[1] == nowTuple[1]): #same year and week
+    if(thenTuple[0] == nowTuple[0] and thenTuple[1] == nowTuple[1]): #same year and week
       dayDiff = thenTuple[2] - nowTuple[2]
 
       for (difference,result) in HUMANIZED_DATES:
