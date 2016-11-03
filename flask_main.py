@@ -111,14 +111,14 @@ def humanize_arrow_date( date ):
     try:
         then = arrow.get(date).to('local')
         now = arrow.utcnow().to('local')
+        print(then)
+        print(now)
         if then.date() == now.date():
             human = "Today"
         else: 
             human = then.humanize(now)
             if human == "in a day":
                 human = "Tomorrow"
-            elif "hours" in human:
-                human = "Today"
     except: 
         human = date
     return human
