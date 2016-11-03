@@ -111,8 +111,8 @@ def humanize_arrow_date( date ):
     try:
         then = arrow.get(date)
         now = arrow.utcnow()
-        print(then)
-        print(now)
+        print(then.isocalendar())
+        print(now.isocalendar())
         if then.date() == now.date():
             human = "Today"
         else: 
