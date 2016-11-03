@@ -55,8 +55,6 @@ except:
     print("Failure opening database.  Is Mongo running? Correct password?")
     sys.exit(1)
 
-
-
 ###
 # Pages
 ###
@@ -103,12 +101,12 @@ def page_not_found(error):
 @app.template_filter( 'humanize' )
 def humanize_arrow_date( date ):
     """
-    Arrow's humanize works almost perfect but times around within plus
+    Arrow's humanize works almost perfect but times  within plus
     or minus 24 hours of now don't give us what we want. So we'll write 
     our own specialized humanize for times in this intervate
     """
-    #Table with desired outputs
-    HUMANIZED_DATES = [(-1,"Yesterday"),(0,"Today"),(1,"Tomorrow")]
+    
+    HUMANIZED_DATES = [(-1,"Yesterday"),(0,"Today"),(1,"Tomorrow")] #Table with desired outputs
 
     try:
         then = arrow.get(date)
@@ -140,14 +138,13 @@ def humanize_arrow_date( date ):
 def get_memos():
     """
     Returns all memos in the database, in a form that
-    can be inserted directly in the 'session' object.
+    can be inserted into the flask global object.
     """
     records = [ ]
     for record in collection.find( { "type": "dated_memo" } ).sort([("date",1)]):
         record['date'] = arrow.get(record['date'])
         records.append(record)
  
-    print(records)
     return records
 
 def insert_memo(date, memo):
@@ -172,6 +169,8 @@ def delete_memo(memoId):
 
     collection.remove(document)
     return
+
+
 
 if __name__ == "__main__":
     app.debug=CONFIG.DEBUG
