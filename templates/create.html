@@ -55,7 +55,7 @@
 
   function validateForm(){
     var dateinput = $('input[name="date"]').val();
-    var memoinput = $('textarea[name="memo"]').val();
+    var memoinput = $('textarea[name="memo"]').val().trim();
 
     if(!dateRegex.test(dateinput)){
       sendAlert("Invalid Date","warning");
@@ -67,7 +67,7 @@
       return false;
     }
 
-    return false;
+    return true;
   }
 
   var sendAlert = function(message, type){
@@ -76,7 +76,6 @@
       htmlcode = htmlcode + message + "</div>";
 
       msgContainer = $('div[name="alertContainer"]')
-      console.log(msgContainer.html());
       msgContainer.html(htmlcode);
 
       //the following is the code to make the alerts disappear automatically
