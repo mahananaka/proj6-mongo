@@ -108,22 +108,27 @@ def humanize_arrow_date( date ):
     Arrow will try to humanize down to the minute, so we
     need to catch 'today' as a special case. 
     """
+    HUMANIZED_DATES = [(-1,"Yesterday"),(0,"Today"),(1,"Tomorrow")]
+
     try:
         then = arrow.get(date)
         now = arrow.utcnow().to('local')
-        print(then.isocalendar())
-        print(now.isocalendar())
-        print("\n")
-        if then.date() == now.date():
-            human = "Today"
-        else: 
-            human = then.humanize(now)
-            if human == "in a day":
-                human = "Tomorrow"
     except: 
         human = date
-    return human
+        return human
 
+    thenTuple = then.isocalendar()
+    nowTuple = now.isocalendar()
+
+    if(thenTuple[0] == nowTuple[0] && thenTuple[1] == nowTuple[1]): #same year and week
+      dayDiff = thenTuple[2] - nowTuple[2]
+
+      for (difference,result) in HUMANIZED_DATES:
+          if (dayDiff == difference):
+             human = result
+              return human
+
+    return then.humanize(now)
 
 #############
 #
