@@ -68,16 +68,25 @@ def index():
   app.logger.debug("Main page entry, method={}".format(request.method))
   if(request.method == 'POST'):
     for delete in request.form:
-      flask.flash(delete)
+      delete_memo(delete)
   
   g.memos = get_memos()
   return flask.render_template('index.html')
 
-@app.route("/create")
-@app.route("/new")
+@app.route("/create", methods=['GET', 'POST'])
+@app.route("/new", methods=['GET', 'POST'])
 def create():
-     app.logger.debug("Create")
-     return flask.render_template('create.html')
+  app.logger.debug("Create")
+
+  #Post request, add the new memo, redirct to index.
+  if(request.method == 'POST'):
+    record = {"type": "dated_memo", 
+              "date": request.form['date'],
+              "text": request.form['memo']}
+    return redirect(url_for('index',method='GET'))
+
+  #Get request, render template
+  return flask.render_template('create.html')
 
 
 @app.errorhandler(404)
@@ -132,6 +141,27 @@ def get_memos():
         records.append(record)
     return records
 
+def insert_memo(date, memo):
+    """
+    Inserts a new memo into the database, must insert
+    document that is basically a dict.
+    """
+    record = {"type": "dated_memo", 
+              "date": date,
+              "text": memo}
+
+    collection.insert(record)
+    return
+
+def delete_memo(memoId):
+    """
+    Deletes a memo by its memoId from the database. Argument
+    is a document, which is of a dict form.
+    """
+    document = {'_id':ObjectId(memoId)}
+
+    collection.remove(document)
+    return
 
 if __name__ == "__main__":
     app.debug=CONFIG.DEBUG
