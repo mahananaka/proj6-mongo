@@ -111,8 +111,9 @@ def humanize_arrow_date( date ):
     try:
         then = arrow.get(date).to('local')
         now = arrow.utcnow().to('local')
-        print(then.isocalendar())
-        print(now.isocalendar())
+        print(then)
+        print(now)
+        print("\n")
         if then.date() == now.date():
             human = "Today"
         else: 
@@ -139,6 +140,7 @@ def get_memos():
         record['date'] = arrow.get(record['date'])
         records.append(record)
  
+    print(records)
     return records
 
 def insert_memo(date, memo):
@@ -146,8 +148,6 @@ def insert_memo(date, memo):
     Inserts a new memo into the database, must insert
     document that is basically a dict.
     """
-    print("Inserting {}".format(arrow.get(date,"MM/DD/YYYY").isoformat()))
-
     record = {"type": "dated_memo", 
               "date": arrow.get(date,"MM/DD/YYYY").isoformat(),
               "text": memo}
