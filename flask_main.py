@@ -62,14 +62,19 @@ except:
 # Pages
 ###
 
-@app.route("/")
-@app.route("/index")
+@app.route("/", methods=['GET', 'POST'])
+@app.route("/index", methods=['GET', 'POST'])
 def index():
-  app.logger.debug("Main page entry")
-  g.memos = get_memos()
-  for memo in g.memos: 
-      app.logger.debug("Memo: " + str(memo))
-  return flask.render_template('index.html')
+  if(request.method == 'GET'):
+    app.logger.debug("Main page entry")
+    g.memos = get_memos()
+    for memo in g.memos: 
+        app.logger.debug("Memo: " + str(memo))
+    return flask.render_template('index.html')
+  else:
+    for delete in request.form:
+      flask.flash(delete)
+    return flask.render_template('index.html')
 
 @app.route("/create")
 @app.route("/new")
@@ -129,7 +134,7 @@ def get_memos():
         record['date'] = arrow.get(record['date']).isoformat()
         del record['_id']
         records.append(record)
-    return records 
+    return records
 
 
 if __name__ == "__main__":

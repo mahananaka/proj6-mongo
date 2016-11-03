@@ -37,11 +37,12 @@
 {% endwith %}
 
 <h1>Memos</h1>
+<form action="" method="post">
 <div class="row">
 <div class="col-md-2">
   <input type="button" class="btn btn-info" value="Delete Selected">
 </div>
-<div class="col-md-2 col-md-offset-3">
+<div class="col-md-2 col-md-offset-4">
   <a href="{{ url_for('create') }}" class="btn btn-info" role="button">New Memo</a>
 </div>
 </div>
@@ -80,9 +81,7 @@
 {% else %}
   <p>No memos for you. </p>  
 {% endif %}
-
- 
-
+</form>
 </div> <!-- container -->
 </body>
 </html>
