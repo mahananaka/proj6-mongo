@@ -47,37 +47,23 @@
 </div>
 </div>
 {% if g.memos %}
-  <div class="row">
-  <div class="col-md-1 text-center">
-    <h4>Delete</h4>
-  </div>
-  <div class="col-md-2">
-    <h4>Date</h4>
-  </div>
-  <div class="col-md-9">
-    <h4>Content</h4>
-  </div>
-  </div> <!-- row -->
-  <div class="memo">
+  <table class="table table-striped">
   {% for memo in g.memos %}
-    {% if loop.index is divisibleby(2) %}
-    <div class="row even">
-    {% else %}
-    <div class="row odd">
-    {% endif %}
-    <div class="col-md-1 text-center">
-      <label><input type="checkbox" name="{{ memo._id }}" value=""></label>
-    </div>
-    <div class="col-md-2">
-      {{ memo.date | humanize }}
-    </div>
-    <div class="col-md-9">
-      {{ memo.text }}
-    </div>
-    </div> <!-- row -->
+    <tr>
+      <td rowspan="2">
+        <label><input type="checkbox" name="{{ memo._id }}" value=""></label>
+      </td>
+    <tr>
+    <tr>
+      <td>
+        <strong>{{ memo.date | humanize }}</strong>
+      </td>
+      <td>
+        {{ memo.text }}
+      </td>
+    <tr>
   {% endfor %}
-  </div> <!-- memo -->
-  </div>
+  </table>
 {% else %}
   <p>No memos for you. </p>  
 {% endif %}

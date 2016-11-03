@@ -103,20 +103,21 @@ def page_not_found(error):
 @app.template_filter( 'humanize' )
 def humanize_arrow_date( date ):
     """
-    Date is internal UTC ISO format string.
-    Output should be "today", "yesterday", "in 5 days", etc.
-    Arrow will try to humanize down to the minute, so we
-    need to catch 'today' as a special case. 
+    Arrow's humanize works almost perfect but times around within plus
+    or minus 24 hours of now don't give us what we want. So we'll write 
+    our own specialized humanize for times in this intervate
     """
+    #Table with desired outputs
     HUMANIZED_DATES = [(-1,"Yesterday"),(0,"Today"),(1,"Tomorrow")]
 
     try:
         then = arrow.get(date)
         now = arrow.utcnow().to('local')
-    except: 
+    except: #if problems occur then just return an unformated date
         human = date
         return human
 
+    #isocalendar() returns (isoYear#, isoWeek#, isoWeekday)
     thenTuple = then.isocalendar()
     nowTuple = now.isocalendar()
 
@@ -128,6 +129,7 @@ def humanize_arrow_date( date ):
               human = result
               return human
 
+    #not in the small interval of time so just use the humanize function of arrow
     return then.humanize(now)
 
 #############
