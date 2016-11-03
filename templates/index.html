@@ -38,15 +38,15 @@
 
 <h1>Memos</h1>
 <form action="" method="post">
-<div class="container text-center">
 <div class="row">
-<div class="col-md-2">
-  <input type="submit" class="btn btn-info" value="Delete Selected">
+  <div class="col-md-2">
+    <input type="submit" class="btn btn-info" value="Delete Selected">
+  </div>
+  <div class="col-md-2 col-md-offset-8 text-right">
+    <a href="{{ url_for('create') }}" class="btn btn-info" role="button">Add New Memo</a>
+  </div>
 </div>
-<div class="col-md-2 col-md-offset-8 text-right">
-  <a href="{{ url_for('create') }}" class="btn btn-info" role="button">Add New Memo</a>
-</div>
-</div>
+<div class="container centered">
 {% if g.memos %}
   <table class="table" style="width: 50%;">
   {% for memo in g.memos %}
