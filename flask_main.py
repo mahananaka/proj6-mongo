@@ -65,15 +65,12 @@ except:
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/index", methods=['GET', 'POST'])
 def index():
-  if(request.method == 'GET'):
-    app.logger.debug("Main page entry")
-    g.memos = get_memos()
-    for memo in g.memos: 
-        app.logger.debug("Memo: " + str(memo))
-    return flask.render_template('index.html')
-  else:
+  app.logger.debug("Main page entry, method={}".format(request.method))
+  if(request.method == 'POST'):
     for delete in request.form:
       flask.flash(delete)
+  
+    g.memos = get_memos()
     return flask.render_template('index.html')
 
 @app.route("/create")
