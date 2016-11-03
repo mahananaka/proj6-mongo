@@ -49,12 +49,12 @@
 {% if g.memos %}
   <table class="table">
   {% for memo in g.memos %}
-    <tr>
-      {% if loop.index is divisibleby(2) %}
-      <td rowspan="2" class="evenRow">
-      {% else %}
-      <td rowspan="2" class="evenRow">
-      {% endif %}
+    {% if loop.index is divisibleby(2) %}
+    <tr class="evenRow">
+    {% else %}
+    <tr class="oddRow">
+    {% endif %}
+      <td rowspan="2">
         <label><input type="checkbox" name="{{ memo._id }}" value=""></label>
       </td>
       <td>
@@ -62,9 +62,9 @@
       </td>
     </tr>
     {% if loop.index is divisibleby(2) %}
-    <td rowspan="2" class="evenRow">
+    <tr class="evenRow">
     {% else %}
-    <td rowspan="2" class="evenRow">
+    <tr class="oddRow">
     {% endif %}
       <td>
         {{ memo.text }}
