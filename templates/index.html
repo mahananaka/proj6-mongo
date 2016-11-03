@@ -42,11 +42,10 @@
   <div class="col-md-2">
     <input type="submit" class="btn btn-info" value="Delete Selected">
   </div>
-  <div class="col-md-2 col-md-offset-8 text-right">
+  <div class="col-md-2 col-md-offset-8">
     <a href="{{ url_for('create') }}" class="btn btn-info" role="button">Add New Memo</a>
   </div>
 </div>
-<div class="container centered">
 {% if g.memos %}
   <table class="table" style="width: 50%;">
   {% for memo in g.memos %}
@@ -76,7 +75,6 @@
 {% else %}
   <p>No memos for you. </p>  
 {% endif %}
-</div>
 </form>
 </div> <!-- container -->
 </body>
