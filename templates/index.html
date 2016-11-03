@@ -60,7 +60,6 @@
       <td class="col-md-5">
         <strong>{{ memo.date | humanize }}</strong>
       </td>
-      <td class="col-md-6"></td>
     </tr>
     {% if loop.index is divisibleby(2) %}
     <tr class="evenRow">
@@ -70,7 +69,6 @@
       <td class="col-md-5">
         {{ memo.text }}
       </td>
-      <td class="col-md-6"></td>
     </tr>
   {% endfor %}
   </table>
