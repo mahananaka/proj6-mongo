@@ -31,7 +31,8 @@
 {% endwith %}
 
 <h1 class="text-center">New Memo</h1>
-<form action="" method="post">
+<form action="" method="post" onsubmit="return validateForm()">
+<div class="container" style="position: absolute; top: 20px; left: 0px; right: 0px; margin-left: auto; margin-right: auto;" name="alertContainer">
 <div class="container">
     <div class="row">
         <label>Date</label>
@@ -47,6 +48,36 @@
 </div>
 
 </form>
+<script type="text/javascript">
+
+  var dateRegex = /^([0][1-9]|[1][012])\/([0][1-9]|[12][\d]|[3][01])\/\d{4}$/; // MM/DD/YYYY; doesn't stop bad dates like Feb 30
+
+  function validateForm(){
+    var dateinput = $('input[name="date"]').val();
+
+    if(dateRegex.test(dateinput))
+      return true;
+    
+    sendAlert("Invalid Date","warning");
+    return false;      
+  }
+
+  var sendAlert = function(message, type){
+      //making a string of html to write to page, not very pretty but it works
+      var htmlcode = "<div class='alert alert-" + type + " text-center'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+      htmlcode = htmlcode + message + "</div>";
+
+      msgContainer = $('div[name="alertContainer"]')
+      msgContainer.html(htmlcode);
+
+      //the following is the code to make the alerts disappear automatically
+      //credit to "I Can Has Kittenz" @ http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+      msgContainer.fadeTo(2000, 500).slideUp(500, function(){
+          msgContainer.slideUp(500);
+      });
+  }
+
+</script>
 </div> <!-- container -->
 </body>
 </html>
