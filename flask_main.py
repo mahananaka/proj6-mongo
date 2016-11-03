@@ -117,6 +117,8 @@ def humanize_arrow_date( date ):
             human = then.humanize(now)
             if human == "in a day":
                 human = "Tomorrow"
+            elif "hours" in human:
+                human = "Today"
     except: 
         human = date
     return human
@@ -134,7 +136,7 @@ def get_memos():
     """
     records = [ ]
     for record in collection.find( { "type": "dated_memo" } ).sort([("date",1)]):
-        record['date'] = arrow.get(record['date']).isoformat()
+        record['date'] = arrow.get(record['date']).to('local').isoformat()
         records.append(record)
     return records
 
