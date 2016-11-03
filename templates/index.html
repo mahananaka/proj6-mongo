@@ -50,7 +50,7 @@
   <table class="table">
   {% for memo in g.memos %}
     <tr>
-      {% if loop.index is divisible 2 %}
+      {% if loop.index is divisibleby(2) %}
       <td rowspan="2" class="evenRow">
       {% else %}
       <td rowspan="2" class="evenRow">
@@ -61,7 +61,7 @@
         <strong>{{ memo.date | humanize }}</strong>
       </td>
     </tr>
-    {% if loop.index is divisible 2 %}
+    {% if loop.index is divisibleby(2) %}
     <td rowspan="2" class="evenRow">
     {% else %}
     <td rowspan="2" class="evenRow">
