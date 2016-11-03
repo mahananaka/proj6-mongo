@@ -47,17 +47,25 @@
 </div>
 </div>
 {% if g.memos %}
-  <table class="table table-striped">
+  <table class="table">
   {% for memo in g.memos %}
     <tr>
-      <td rowspan="2">
+      {% if loop.index is divisible 2 %}
+      <td rowspan="2" class="evenRow">
+      {% else %}
+      <td rowspan="2" class="evenRow">
+      {% endif %}
         <label><input type="checkbox" name="{{ memo._id }}" value=""></label>
       </td>
       <td>
         <strong>{{ memo.date | humanize }}</strong>
       </td>
     </tr>
-    <tr>      
+    {% if loop.index is divisible 2 %}
+    <td rowspan="2" class="evenRow">
+    {% else %}
+    <td rowspan="2" class="evenRow">
+    {% endif %}
       <td>
         {{ memo.text }}
       </td>
