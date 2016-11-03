@@ -77,10 +77,8 @@ def create():
 
   #Post request, add the new memo, redirct to index.
   if(request.method == 'POST'):
-    record = {"type": "dated_memo", 
-              "date": request.form['date'],
-              "text": request.form['memo']}
-    return redirect(url_for('index',method='GET'))
+    insert_memo(request.form['date'],request.form['memo'])
+    return redirect(url_for('index'))
 
   #Get request, render template
   return flask.render_template('create.html')
@@ -148,6 +146,7 @@ def insert_memo(date, memo):
               "text": memo}
 
     collection.insert(record)
+
     return
 
 def delete_memo(memoId):
