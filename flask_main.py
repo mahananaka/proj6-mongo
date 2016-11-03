@@ -70,8 +70,8 @@ def index():
     for delete in request.form:
       flask.flash(delete)
   
-    g.memos = get_memos()
-    return flask.render_template('index.html')
+  g.memos = get_memos()
+  return flask.render_template('index.html')
 
 @app.route("/create")
 @app.route("/new")
