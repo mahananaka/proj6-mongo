@@ -13,10 +13,7 @@ Representation conventions for dates:
 """
 
 import flask
-from flask import g
-from flask import render_template
-from flask import request
-from flask import url_for
+from flask import g, render_template, request, url_for, redirect
 
 import json
 import logging
