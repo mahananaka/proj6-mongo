@@ -30,18 +30,14 @@
   {% endif %}
 {% endwith %}
 
-<h1>New Memo</h1>
+<h1 class="text-center">New Memo</h1>
 <form action="" method="post">
 <div class="container">
     <div class="row">
-        <div class='col-sm-6'>
-            <input type='text' class="form-control" id='datetimepicker4' />
+        <div class='col-sm-4'>
+            <label>Date</label>
+            <input type='text' class="form-control" name="date" value="MM/DD/YYYY" />
         </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker4').datetimepicker();
-            });
-        </script>
     </div>
 </div>
 
