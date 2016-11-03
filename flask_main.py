@@ -144,7 +144,7 @@ def insert_memo(date, memo):
     document that is basically a dict.
     """
     record = {"type": "dated_memo", 
-              "date": date,
+              "date": arrow.get(date).to('local').isoformat(),
               "text": memo}
 
     collection.insert(record)
