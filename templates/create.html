@@ -55,7 +55,7 @@
 
   function validateForm(){
     var dateinput = $('input[name="date"]').val();
-    var memoinput = $('textarea[name="memo"]').val().strip();
+    var memoinput = $('textarea[name="memo"]').val();
 
     if(!dateRegex.test(dateinput)){
       sendAlert("Invalid Date","warning");
