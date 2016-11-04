@@ -23,7 +23,7 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container text-center">
 
 <!-- Flashed messages before content -->
 {% with messages = get_flashed_messages() %}
@@ -47,7 +47,6 @@
   </div>
 </div>
 {% if g.memos %}
-  <div class="row">
   <div class="col-md-offset-1">
   <table class="table" style="width: 50%;">
   {% for memo in g.memos %}
