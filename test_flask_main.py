@@ -7,11 +7,11 @@ Nose tests for flask_main.py
 #from pymongo import MongoClient
 #import secrets.admin_secrets
 #import secrets.client_secrets
-#MONGO_CLIENT_URL = "mongodb://{}:{}@localhost:{}/{}".format(
-#    secrets.client_secrets.db_user,
-#    secrets.client_secrets.db_user_pw,
-#    secrets.admin_secrets.port, 
-#    secrets.client_secrets.db)
+MONGO_CLIENT_URL = "mongodb://{}:{}@localhost:{}/{}".format(
+    secrets.client_secrets.db_user,
+    secrets.client_secrets.db_user_pw,
+    secrets.admin_secrets.port, 
+    secrets.client_secrets.db)
 
 # Date handling 
 import arrow # Replacement for datetime, based on moment.js
