@@ -7,9 +7,10 @@ from bson.objectid import ObjectId
 from pymongo import MongoClient
 import secrets.admin_secrets
 import secrets.client_secrets
-MONGO_CLIENT_URL = "mongodb://{}:{}@localhost:{}/{}".format(
+MONGO_CLIENT_URL = "mongodb://{}:{}@{}:{}/{}".format(
     secrets.client_secrets.db_user,
     secrets.client_secrets.db_user_pw,
+    secrets.admin_secrets.host
     secrets.admin_secrets.port, 
     secrets.client_secrets.db)
 
