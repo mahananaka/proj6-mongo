@@ -56,10 +56,10 @@
     {% else %}
     <tr class="oddRow">
     {% endif %}
-      <td class="col-md-1" rowspan="2">
+      <td rowspan="2">
         <label><input type="checkbox" name="{{ memo._id }}" value=""></label>
       </td>
-      <td class="col-md-5">
+      <td>
         <strong>{{ memo.date | humanize }}</strong>
       </td>
     </tr>
@@ -68,7 +68,7 @@
     {% else %}
     <tr class="oddRow">
     {% endif %}
-      <td class="col-md-5">
+      <td>
         {{ memo.text }}
       </td>
     </tr>
