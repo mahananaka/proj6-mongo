@@ -55,6 +55,7 @@ def test_get_memos():
 
     #veryify the proper form of the dict
     for entry in records:
+        assert entry['_id'] is not None
         assert entry['date'] is not None
         assert entry['text'] is not None
 
