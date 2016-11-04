@@ -20,14 +20,14 @@ However you should have success as long as you have bash and make on your server
 3. bash ./configure
 4. You will need to create a a folder called secrets. Inside of secrets folder you will need two files
   * client_secrets.py which will need 3 lines, the quotes must be included.
-    * db = “dbname”  			//this is the name of the database you created
-    * db_user = “username”		//a username with readWrite access to db
-    * db_user_pw = “pwd”		//pwd for db_user on db
+    * db = “dbname”  		//this is the name of the database you created
+    * db_user = “username”	//a username with readWrite access to db
+    * db_user_pw = “pwd”	//pwd for db_user on db
   * admin_secrets.py which will need 3 lines, the quotes must be included.
     * port = “number”  		//port mongo is listening for connections on
-	  * host = “address”		//address of mongodb, for example localhost
-	  * admin_user = “username”	//optional, required to run create_db.py and destroy_db.py
-	  * admin_pw = “pwd			//optional, required to run create_db.py and destroy_db.py
+    * host = “address”		//address of mongodb, for example localhost
+    * admin_user = “username”	//optional, required to run create_db.py and destroy_db.py
+    * admin_pw = “pwd		//optional, required to run create_db.py and destroy_db.py
 5. make run
 
 The program should then sit idle and wait for page requests. The default port is
