@@ -79,10 +79,10 @@ def create():
 
   #Post request, add the new memo, redirct to index.
   if(request.method == 'POST'):
-    if(insert_memo(request.form['date'],request.form['memo']))
+    if(insert_memo(request.form['date'],request.form['memo'])):
         return redirect(url_for('index'))
-    else
-      flask.flash("Bad Date")
+    else:
+        flask.flash("Bad Date")
 
   #Get request, render template
   return flask.render_template('create.html')
