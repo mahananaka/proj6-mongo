@@ -39,7 +39,7 @@
 <h1>Memos</h1>
 <form action="" method="post">
 <div class="row">
-  <div class="col-md-2 col-md-offset-2">
+  <div class="col-md-2 col-md-offset-1">
     <input type="submit" class="btn btn-info" value="Delete Selected">
   </div>
   <div class="col-md-2 col-md-offset-2">
@@ -48,7 +48,7 @@
 </div>
 {% if g.memos %}
   <div class="row">
-  <div class="col-md-10 col-md-offset-2">
+  <div class="col-md-10 col-md-offset-1">
   <table class="table" style="width: 50%;">
   {% for memo in g.memos %}
     {% if loop.index is divisibleby(2) %}
