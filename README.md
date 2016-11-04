@@ -38,4 +38,4 @@ the server machine http://localhost:5000/. To stop the program at any time use c
 Usage is pretty self explanatory, error messages will pop up if there is an issue. It is a simple web forum otherwise
 
 ## Testing
-A few test cases have been created. If you would like to run the tests yourself this can be done with the command `make test`. This will use nose to run all tests that have been written. These tests are located in the test_flask_main.py file. Write now it tests date time formatting as well as insertion, retrieval, and deletion from the database.
+A few test cases have been created. If you would like to run the tests yourself this can be done with the command `make test`. This will use nose to run all tests that have been written. These tests are located in the test_flask_main.py file. Right now it tests date time formatting as well as insertion, retrieval, and deletion from the database.
