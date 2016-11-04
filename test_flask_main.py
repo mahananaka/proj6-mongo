@@ -14,7 +14,7 @@ Nose tests for flask_main.py
 #    secrets.client_secrets.db)
 
 # Date handling 
-import proj6-mongo.arrow # Replacement for datetime, based on moment.js
+import arrow # Replacement for datetime, based on moment.js
 import datetime # But we still need time
 from dateutil import tz  # For interpreting local times
 
