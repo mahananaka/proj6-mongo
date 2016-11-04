@@ -14,12 +14,15 @@ import sys
 import secrets.admin_secrets
 import secrets.client_secrets
 
+
 MONGO_CLIENT_URL = "mongodb://{}:{}@{}:{}/{}".format(
     secrets.client_secrets.db_user,
     secrets.client_secrets.db_user_pw,
     secrets.admin_secrets.host,
     secrets.admin_secrets.port,
     secrets.client_secrets.db)
+
+print("{}".format(MONGO_CLIENT_URL))
 
 try: 
     print(MONGO_CLIENT_URL)

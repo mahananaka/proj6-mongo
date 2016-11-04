@@ -35,6 +35,7 @@ MONGO_CLIENT_URL = "mongodb://{}:{}@localhost:{}/{}".format(
     secrets.admin_secrets.port, 
     secrets.client_secrets.db)
 
+print("{}".format(MONGO_CLIENT_URL))
 ###
 # Globals
 ###
