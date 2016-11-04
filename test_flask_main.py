@@ -30,12 +30,12 @@ from flask_main import delete_memo
 
 def test_humanize_arrow_date():
     """
-    Testing initializing AcpBrevet
+    Testing initializing Humanize
     """
 
     curDateTime = arrow.utcnow().to('local')
 
-    assert flask_main.humanize_arrow_date(curDateTime) == "Today"
-    assert flask_main.humanize_arrow_date(curDateTime.replace(days=+1)) == "Tomorrow"
-    assert flask_main.humanize_arrow_date(curDateTime.replace(days=-1)) == "Yesterday"
+    assert humanize_arrow_date(curDateTime) == "Today"
+    assert humanize_arrow_date(curDateTime.replace(days=+1)) == "Tomorrow"
+    assert humanize_arrow_date(curDateTime.replace(days=-1)) == "Yesterday"
 
