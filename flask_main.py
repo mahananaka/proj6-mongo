@@ -35,7 +35,6 @@ MONGO_CLIENT_URL = "mongodb://{}:{}@localhost:{}/{}".format(
     secrets.admin_secrets.port, 
     secrets.client_secrets.db)
 
-print("{}".format(MONGO_CLIENT_URL))
 ###
 # Globals
 ###
@@ -48,9 +47,9 @@ app.secret_key = CONFIG.secret_key
 ###
 
 try: 
-    dbclient = MongoClient(MONGO_CLIENT_URL)
-    db = getattr(dbclient, secrets.client_secrets.db)
-    collection = db.dated
+    dbclient = MongoClient(MONGO_CLIENT_URL)            #connect
+    db = getattr(dbclient, secrets.client_secrets.db)   #get specificed db in secrets
+    collection = db.dated                               #get dated collection/table
 
 except:
     print("Failure opening database.  Is Mongo running? Correct password?")
@@ -64,10 +63,12 @@ except:
 @app.route("/index", methods=['GET', 'POST'])
 def index():
   app.logger.debug("Main page entry, method={}".format(request.method))
-  if(request.method == 'POST'):
-    for delete in request.form:
+
+  if(request.method == 'POST'): #If a post occured user wants to delete memos
+    for delete in request.form: #delete each selected, delete variable holds id of db entry
       delete_memo(delete)
   
+  #regardless of get/post get the memos and put them in g for jinja to use
   g.memos = get_memos()
   return flask.render_template('index.html')
 
@@ -78,8 +79,10 @@ def create():
 
   #Post request, add the new memo, redirct to index.
   if(request.method == 'POST'):
-    insert_memo(request.form['date'],request.form['memo'])
-    return redirect(url_for('index'))
+    if(insert_memo(request.form['date'],request.form['memo']))
+        return redirect(url_for('index'))
+    else
+      flask.flash("Bad Date")
 
   #Get request, render template
   return flask.render_template('create.html')
@@ -102,7 +105,7 @@ def page_not_found(error):
 @app.template_filter( 'humanize' )
 def humanize_arrow_date( date ):
     """
-    Arrow's humanize works almost perfect but times  within plus
+    Arrow's humanize works almost perfect but times within plus
     or minus 24 hours of now don't give us what we want. So we'll write 
     our own specialized humanize for times in this intervate
     """
@@ -128,7 +131,7 @@ def humanize_arrow_date( date ):
               human = result
               return human
 
-    #not in the small interval of time so just use the humanize function of arrow
+    #not in the small interval of time so just use the arrow humanize function
     return then.humanize(now)
 
 #############
@@ -153,22 +156,28 @@ def insert_memo(date, memo):
     Inserts a new memo into the database, must insert
     document that is basically a dict.
     """
+    try:
+      arwDate = arrow.get(date,"MM/DD/YYYY").isoformat()
+    except:
+      return False
+
     record = {"type": "dated_memo", 
-              "date": arrow.get(date,"MM/DD/YYYY").isoformat(),
+              "date": arwDate,
               "text": memo}
 
     collection.insert(record)
 
-    return
+    return True
 
 def delete_memo(memoId):
     """
     Deletes a memo by its memoId from the database. Argument
     is a document, which is of a dict form.
     """
-    document = {'_id':ObjectId(memoId)}
+    document = {'_id':ObjectId(memoId)} #this requires bson.objectid import
 
     collection.remove(document)
+
     return
 
 

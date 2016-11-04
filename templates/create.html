@@ -22,11 +22,11 @@
 <!-- Flashed messages before content -->
 {% with messages = get_flashed_messages() %}
   {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
+    <script type="text/javascript">
+      {% for message in messages %}
+        sendAlert({{ messages[0] }});
+      {% endfor %}      
+    </script>
   {% endif %}
 {% endwith %}
 
@@ -57,9 +57,9 @@
     var dateinput = $('input[name="date"]').val();
     var memoinput = $('textarea[name="memo"]').val().trim();
 
-    if(!dateRegex.test(dateinput)){
-      sendAlert("Invalid Date","warning");
-      return false;
+    if(!dateRegex.test(dateinput)){         //This does miss things like Feb 30 or April 31
+      sendAlert("Invalid Date","warning");  
+      return false;                     
     }
 
     if(memoinput == ""){
