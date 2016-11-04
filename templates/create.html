@@ -17,8 +17,15 @@
 
 
 </head>
-<body>
+<body onload="sendAlert('{{ flashmsg }}')">
 <div class="container">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script type="text/javascript">
+          sendAlert("{{ messages[0] }}","warning");
+        </script>
+    {% endif %}
+  {% endwith %}
 <h1 class="text-center">New Memo</h1>
 <form action="" method="post" onsubmit="return validateForm()">
 <div class="container" style="position: absolute; top: 20px; left: 0px; right: 0px; margin-left: auto; margin-right: auto;" name="alertContainer"></div>
@@ -60,6 +67,9 @@
   }
 
   var sendAlert = function(message, type){
+      if(message == "")
+        return false;
+
       //making a string of html to write to page, not very pretty but it works
       var htmlcode = "<div class='alert alert-" + type + " text-center'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
       htmlcode = htmlcode + message + "</div>";
@@ -74,14 +84,7 @@
       });
   }
 
-  //Flashed with javascript alert
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        {% for message in messages %}
-          sendAlert("{{ messages[0] }}");
-        {% endfor %}      
-    {% endif %}
-  {% endwith %}
+  
 
 </script>
 </div> <!-- container -->
