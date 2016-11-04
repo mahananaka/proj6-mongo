@@ -24,7 +24,7 @@
   {% if messages %}
     <script type="text/javascript">
       {% for message in messages %}
-        sendAlert({{ messages[0] }});
+        sendAlert("{{ messages[0] }}");
       {% endfor %}      
     </script>
   {% endif %}
