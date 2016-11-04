@@ -17,15 +17,8 @@
 
 
 </head>
-<body onload="sendAlert('{{ flashmsg }}')">
+<body>
 <div class="container">
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <script type="text/javascript">
-          sendAlert("{{ messages[0] }}","warning");
-        </script>
-    {% endif %}
-  {% endwith %}
 <h1 class="text-center">New Memo</h1>
 <form action="" method="post" onsubmit="return validateForm()">
 <div class="container" style="position: absolute; top: 20px; left: 0px; right: 0px; margin-left: auto; margin-right: auto;" name="alertContainer"></div>
@@ -84,7 +77,12 @@
       });
   }
 
-  
+  //flash message from render
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+          sendAlert("{{ messages[0] }}","warning");
+    {% endif %}
+  {% endwith %}
 
 </script>
 </div> <!-- container -->
