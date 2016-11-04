@@ -3,10 +3,10 @@ Nose tests for flask_main.py
 """
 
 # Mongo database
-#from bson.objectid import ObjectId
-#from pymongo import MongoClient
-#import secrets.admin_secrets
-#import secrets.client_secrets
+from bson.objectid import ObjectId
+from pymongo import MongoClient
+import secrets.admin_secrets
+import secrets.client_secrets
 MONGO_CLIENT_URL = "mongodb://{}:{}@localhost:{}/{}".format(
     secrets.client_secrets.db_user,
     secrets.client_secrets.db_user_pw,
