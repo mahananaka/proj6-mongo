@@ -39,10 +39,10 @@
 <h1>Memos</h1>
 <form action="" method="post">
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-2 col-md-offset-4">
     <input type="submit" class="btn btn-info" value="Delete Selected">
   </div>
-  <div class="col-md-2 col-md-offset-8">
+  <div class="col-md-2 col-md-offset-4">
     <a href="{{ url_for('create') }}" class="btn btn-info" role="button">Add New Memo</a>
   </div>
 </div>
@@ -54,7 +54,7 @@
     {% else %}
     <tr class="oddRow">
     {% endif %}
-      <td class="col-md-1" rowspan="2">
+      <td class="col-md-1 col-md-offset-4" rowspan="2">
         <label><input type="checkbox" name="{{ memo._id }}" value=""></label>
       </td>
       <td class="col-md-5">
