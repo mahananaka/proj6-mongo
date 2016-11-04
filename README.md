@@ -1,54 +1,41 @@
-# proj6-mongo
-Simple list of dated memos kept in MongoDB database
+# Proj6-mongo
+This is a class project. It uses mongodb to store text memos. Memos are created using a web
+forum. The webpage is created with Flask and Jinja2
 
-## What is here
+## Author
+Jared Paeschke, paeschke@cs.uoregon.edu
 
-A simple Flask app that displays all the dated memos it finds in a MongoDB database.
-There is also a 'scaffolding' program, db_trial.py, for inserting a couple records into the database 
-and printing them out.  Get db_trial.py working before you try making your flask app work. 
+## Overview
+This project has two pages the first is used to display memos. It lists them in ascending order of date. Each memo has a checkbox next to it which if selected will be deleted when the user hits the “Delete Selected” button at the top.
 
-## What is not here
+The second page of the Flask app allows creation of memos. When creating you must specify a date and then a message that will be stored into the database.
 
-In addition to the missing functionality in the application, you will
-need a MongoDB database, and you will need credentials (user name and
-password) both for an administrative user and a regular user.  The
-administrative user may be you, but the regular user is your
-application. Make a subdirectory called "secrets" and place two files
-in it: 
+## Installation
+When writing and testing this program, the test machine was a Raspberry Pi 3 running
+Raspian Jesse. This is the best sure fire way that the install will go smoothly. 
+However you should have success as long as you have bash and make on your server machine. You will also need to have MongoDB installed and setup. Setup and use of MongoDB will not be covered here, see the MongoDB documentation if you need assistance.
 
-- secrets/admin_secrets.py holds configuration information for your MongoDB
-  database, including the administrative password.  
-= secrets/client_secrets.py holds configuration information for your
-  application. 
+1. git clone https://github.com/mahananaka/proj5-mongo.git < install directory >
+2. cd < install directory >
+3. bash ./configure
+4. You will need to create a a folder called secrets. Inside of secrets folder you will need two files
+  * client_secrets.py which will need 3 lines, the quotes must be included.
+    * db = “dbname”  			//this is the name of the database you created
+    * db_user = “username”		//a username with readWrite access to db
+    * db_user_pw = “pwd”		//pwd for db_user on db
+  * admin_secrets.py which will need 3 lines, the quotes must be included.
+    * port = “number”  		//port mongo is listening for connections on
+	  * host = “address”		//address of mongodb, for example localhost
+	  * admin_user = “username”	//optional, required to run create_db.py and destroy_db.py
+	  * admin_pw = “pwd			//optional, required to run create_db.py and destroy_db.py
+5. make run
 
+The program should then sit idle and wait for page requests. The default port is
+port 5000, to get the main page surf to http://yourserverip:5000/ or if you're on 
+the server machine http://localhost:5000/. To stop the program at any time use ctrl+c.
 
+## Usage
+Usage is pretty self explanatory, error messages will pop up if there is an issue. It is a simple web forum otherwise
 
-## Functionality you'll add
-
-The user should be able to add dated memos, either from the same index page or from a separate page. 
-Memos should be displayed in date order. 
-The user should be able to delete memos. 
-
-## Setting up
-
-Our use of the database is pretty simple, but you should anticipate
-that installing MongoDB could take some time.  Since you may not be
-able to install the same version of MongoDB on your development
-computer and your Pi, it will be especially important to test your
-project on the Pi. 
-
-The version of MongoDB available for installing on Raspberry Pi with
-apt-get is 2.4.  The version you can find for your development
-computer is probably 3.x.  You may even have difficulty finding
-documentation for 2.4, as it is considered obsolete.  However,
-commands that work for 2.4 still seem to work for 3.x, so you should
-write your application and support scripts to use 2.4.   The
-difference that may cause you the most headaches is in creating
-database user accounts (which are different than the Unix accounts for
-users). 
-
-In Python, the pymongo API works with both versions of MongoDB, so
-it's only the initial setup where you have to be  
-careful to use the right version-specific commands. 
-
-
+## Testing
+A few test cases have been created. If you would like to run the tests yourself this can be done with the command `make test`. This will use nose to run all tests that have been written. These tests are located in the test_flask_main.py file. Write now it tests date time formatting as well as insertion, retrieval, and deletion from the database.
