@@ -42,13 +42,13 @@
   <div class="col-md-2 col-md-offset-1">
     <input type="submit" class="btn btn-info" value="Delete Selected">
   </div>
-  <div class="col-md-2 col-md-offset-2">
+  <div class="col-md-2 col-md-offset-4">
     <a href="{{ url_for('create') }}" class="btn btn-info" role="button">Add New Memo</a>
   </div>
 </div>
 {% if g.memos %}
-  <div class="col-md-offset-3">
-  <table class="table" style="width: 50%;">
+  <div class="col-md-offset-2">
+  <table class="table" style="width: 75%;">
   {% for memo in g.memos %}
     {% if loop.index is divisibleby(2) %}
     <tr class="evenRow">
